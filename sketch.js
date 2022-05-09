@@ -1,45 +1,45 @@
-const Engine = Matter.Engine
+const Engine = Matter.Engine  
 const World = Matter.World
 const Bodies = Matter.Bodies
 const Body = Matter.Body
 
-let engine, world
+let motor, mundo
 
-let ball1
-let ground
+let bola, chao
 
 function setup() {
   createCanvas(400, 400)
 
-  engine = Engine.create()
-  world = engine.world
-
-  rectMode(CENTER)
   ellipseMode(RADIUS)
+  rectMode(CENTER)
 
-  let ball1Options = {
-    restitution: 0.95,
-    frictionAir: 0.01
+  motor = Engine.create()
+  mundo = motor.world
+
+  let bolaOpcoes = {
+    restitution: 0.95
   }
 
-  ball1 = Bodies.circle(100, 74, 20, ball1Options)
-  World.add(world, ball1)
+  bola = Bodies.circle(100, 200, 25, bolaOpcoes)
+  World.add(mundo, bola)
+  console.log("essa é a bola", bola)
 
-  let groundOptions = {
+  let opcoesChao = {
     isStatic: true
   }
 
-  ground = Bodies.rectangle(200, 390, 400, 20, groundOptions)
-  World.add(world, ground)
+  chao = Bodies.rectangle(200, 395, 400, 10, opcoesChao)
+  World.add(mundo, chao)
 }
 
 function draw() {
   background('black')
 
-  Engine.update(engine)
-
-  ellipse(ball1.position.x, ball1.position.y, 20, 20)
+  Engine.update(motor)
 
   fill('red')
-  rect(ground.position.x, ground.position.y, 400, 20)
+  ellipse(bola.position.x, bola.position.y, 25, 25)
+
+  fill('green')
+  rect(chao.position.x, chao.position.y, 400, 10)
 }

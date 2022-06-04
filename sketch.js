@@ -16,18 +16,17 @@ function setup() {
   motor = Engine.create()
   mundo = motor.world
 
-  let bolaOpcoes = {
-    restitution: 0.95
+  var opcoesBola = {
+    restitution: 1.5
   }
 
-  bola = Bodies.circle(100, 200, 25, bolaOpcoes)
+  bola = Bodies.circle(200, 200, 25, opcoesBola)
   World.add(mundo, bola)
-  console.log("essa é a bola", bola)
 
-  let opcoesChao = {
+  var opcoesChao = {
     isStatic: true
   }
-
+  
   chao = Bodies.rectangle(200, 395, 400, 10, opcoesChao)
   World.add(mundo, chao)
 }
@@ -37,9 +36,9 @@ function draw() {
 
   Engine.update(motor)
 
-  fill('red')
-  ellipse(bola.position.x, bola.position.y, 25, 25)
+  fill('blue')
+  ellipse(bola.position.x, bola.position.y, 25 ,25)
 
-  fill('green')
+  fill('red')
   rect(chao.position.x, chao.position.y, 400, 10)
 }
